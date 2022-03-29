@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="182dp"
+    app:cardCornerRadius="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/rv_hot_sales_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic"
+            />
+
+        <ImageView
+            android:id="@+id/rv_hot_sales_mark_new_image"
+            app:srcCompat="@drawable/ic_circle_primary"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/rv_hot_sales_mark_new_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TVRegular"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:text="@string/mark_new"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_hot_sales_mark_new_image"
+            app:layout_constraintEnd_toEndOf="@+id/rv_hot_sales_mark_new_image"
+            app:layout_constraintStart_toStartOf="@+id/rv_hot_sales_mark_new_image"
+            app:layout_constraintTop_toTopOf="@+id/rv_hot_sales_mark_new_image" />
+
+        <TextView
+            style="@style/TVBold"
+            android:id="@+id/rv_hot_sales_tv_title"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Iphone 13"/>
+
+        <TextView
+            style="@style/TVMedium"
+            android:textColor="@color/white"
+            android:id="@+id/rv_hot_sales_tv_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            tools:text="blablabla"
+            app:layout_constraintStart_toStartOf="@+id/rv_hot_sales_tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/rv_hot_sales_tv_title" />
+
+        <Button
+            android:id="@+id/rv_hot_sales_btn_buy_now"
+            android:layout_width="98dp"
+            android:layout_height="40dp"
+            android:backgroundTint="@color/white"
+            android:text="Buy now!"
+            android:textSize="12sp"
+            android:textColor="@color/secondary"
+            android:textAllCaps="false"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="@id/rv_hot_sales_tv_subtitle"
+            app:layout_constraintTop_toBottomOf="@id/rv_hot_sales_tv_subtitle" />
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

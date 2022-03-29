@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TVRegular">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/secondary</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+
+    <style name="TVMedium">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/secondary</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TVBold">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/secondary</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+
+    <style name="rv_best_seller_tv_discount_price">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/secondary</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+    
+
+
+
+
+
+
+
+
+
+</resources>

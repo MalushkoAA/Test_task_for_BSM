@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/rv_category_iv_circle"
+        android:layout_width="71dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/ic_circle_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
+
+    <ImageView
+        android:id="@+id/rv_category_iv_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/rv_category_iv_circle"
+        app:layout_constraintTop_toTopOf="@id/rv_category_iv_circle"
+        app:layout_constraintEnd_toEndOf="@id/rv_category_iv_circle"
+        app:layout_constraintBottom_toBottomOf="@id/rv_category_iv_circle"
+        tools:src="@drawable/ic_category_phone"
+        />
+
+    <TextView
+        android:id="@+id/rv_category_tv_category"
+        style="@style/TVRegular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/rv_category_iv_circle"
+        app:layout_constraintStart_toStartOf="@id/rv_category_iv_circle"
+        app:layout_constraintTop_toBottomOf="@id/rv_category_iv_circle"
+        tools:text="bla" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
