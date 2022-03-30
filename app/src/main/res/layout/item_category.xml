@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="@id/rv_category_iv_circle"
         app:layout_constraintStart_toStartOf="@id/rv_category_iv_circle"
         app:layout_constraintTop_toBottomOf="@id/rv_category_iv_circle"
-        tools:text="bla" />
+        tools:text="lorem" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

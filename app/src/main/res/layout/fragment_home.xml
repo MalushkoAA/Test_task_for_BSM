@@ -166,7 +166,7 @@
                 style="@style/rv_best_seller_tv_discount_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="17dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/best_seller_header"
                 app:layout_constraintStart_toStartOf="parent"
@@ -205,6 +205,17 @@
     </ScrollView>
 
     <include
+        android:id="@+id/bottom_nav_bar"
+        layout="@layout/bottom_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+    <include
         android:id="@+id/filter_options_card"
         layout="@layout/filter_options"
         android:layout_width="match_parent"
@@ -212,6 +223,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

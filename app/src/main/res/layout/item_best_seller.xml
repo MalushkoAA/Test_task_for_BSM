@@ -54,7 +54,28 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/tvBestSellerDiscountPrice"
             app:layout_constraintTop_toBottomOf="@id/tvBestSellerDiscountPrice"
-            tools:text="Samsa" />
+            tools:text="Lorem" />
+
+        <ImageView
+            android:id="@+id/rv_best_seller_fav_holder"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="15dp"
+            app:srcCompat="@drawable/ic_circle_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_best_seller_fav_holder"
+            app:layout_constraintEnd_toEndOf="@+id/rv_best_seller_fav_holder"
+            app:layout_constraintStart_toStartOf="@+id/rv_best_seller_fav_holder"
+            app:layout_constraintTop_toTopOf="@+id/rv_best_seller_fav_holder"
+            app:srcCompat="@drawable/ic_favorite_not" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
