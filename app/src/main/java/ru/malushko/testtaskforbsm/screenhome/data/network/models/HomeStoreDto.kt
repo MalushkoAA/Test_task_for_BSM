@@ -6,11 +6,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class HomeStoreDto(
-    val id: Int,
-    @Json(name = "is_buy") val isBuy: Boolean,
-    @Json(name = "is_favorites") val isFavorites: Boolean,
-    @Json(name = "is_new") val isNew: Boolean,
-    val picture: String,
-    val subtitle: String,
-    val title: String
+    val id: Int? = null,
+    @Json(name = "is_buy") val isBuy: Boolean? = null,
+    @Json(name = "is_new") val isNew: Boolean? = null,
+    val picture: String? = null,
+    val subtitle: String? = null,
+    val title: String? = null
 ) : Parcelable

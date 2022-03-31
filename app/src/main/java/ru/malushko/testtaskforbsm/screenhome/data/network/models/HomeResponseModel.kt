@@ -6,7 +6,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class HomeResponseModel(
-    @Json(name = "_id") val id: String,
     @Json(name = "best_seller") val bestSeller: List<BestSellerDto>,
     @Json(name = "home_store") val homeStore: List<HomeStoreDto>
 ) : Parcelable
