@@ -11,11 +11,10 @@
         android:layout_height="71dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
-        android:src="@drawable/ic_circle_primary"
+        android:src="@drawable/ic_circle_whie"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/white" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/rv_category_iv_category"
@@ -35,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:textSize="12sp"
+        android:textColor="@color/secondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/rv_category_iv_circle"
         app:layout_constraintStart_toStartOf="@id/rv_category_iv_circle"

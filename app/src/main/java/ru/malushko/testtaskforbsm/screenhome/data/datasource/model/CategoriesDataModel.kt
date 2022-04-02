@@ -1,9 +1,9 @@
-package ru.malushko.testtaskforbsm.screenhome.domain.entities
+package ru.malushko.testtaskforbsm.screenhome.data.datasource.model
 
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 
-data class Category(
+data class CategoriesDataModel(
     val id: Int,
     var name:String,
     @DrawableRes var image:Int,

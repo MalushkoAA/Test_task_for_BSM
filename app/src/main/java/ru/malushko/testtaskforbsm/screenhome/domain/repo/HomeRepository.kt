@@ -9,7 +9,7 @@ interface HomeRepository {
 
     fun getCategoriesList(): LiveData<List<Category>>
 
-    fun selectCategory(category: Category)
+    fun selectCategory(id: Int)
 
     fun getHomeStoreList(): LiveData<List<HomeStore>>
 
