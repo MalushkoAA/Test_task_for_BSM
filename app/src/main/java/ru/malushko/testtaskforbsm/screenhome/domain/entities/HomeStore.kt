@@ -3,10 +3,10 @@ package ru.malushko.testtaskforbsm.screenhome.domain.entities
 import com.squareup.moshi.Json
 
 data class HomeStore(
-    val id: Int?,
-    val isBuy: Boolean?,
-    val isNew: Boolean?,
-    val picture: String?,
-    val subtitle: String?,
-    val title: String?
+    val id: Int? = null,
+    val isBuy: Boolean? = null,
+    val isNew: Boolean? = null,
+    val picture: String? = null,
+    val subtitle: String? = null,
+    val title: String? = null
 )

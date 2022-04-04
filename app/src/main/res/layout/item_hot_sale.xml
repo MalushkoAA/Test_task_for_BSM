@@ -2,8 +2,9 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vp_item"
     android:layout_width="match_parent"
-    android:layout_height="182dp"
+    android:layout_height="match_parent"
     app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +24,7 @@
             />
 
         <ImageView
-            android:id="@+id/rv_hot_sales_mark_new_image"
+            android:id="@+id/rv_hot_sales_label_new_image"
             app:srcCompat="@drawable/ic_circle_primary"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -33,17 +34,17 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/rv_hot_sales_mark_new_text"
+            android:id="@+id/rv_hot_sales_label_new_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/TVRegular"
             android:textColor="@color/white"
             android:textSize="10sp"
             android:text="@string/mark_new"
-            app:layout_constraintBottom_toBottomOf="@+id/rv_hot_sales_mark_new_image"
-            app:layout_constraintEnd_toEndOf="@+id/rv_hot_sales_mark_new_image"
-            app:layout_constraintStart_toStartOf="@+id/rv_hot_sales_mark_new_image"
-            app:layout_constraintTop_toTopOf="@+id/rv_hot_sales_mark_new_image" />
+            app:layout_constraintBottom_toBottomOf="@+id/rv_hot_sales_label_new_image"
+            app:layout_constraintEnd_toEndOf="@+id/rv_hot_sales_label_new_image"
+            app:layout_constraintStart_toStartOf="@+id/rv_hot_sales_label_new_image"
+            app:layout_constraintTop_toTopOf="@+id/rv_hot_sales_label_new_image" />
 
         <TextView
             style="@style/TVBold"

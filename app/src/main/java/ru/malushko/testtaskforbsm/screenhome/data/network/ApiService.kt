@@ -1,6 +1,7 @@
 package ru.malushko.testtaskforbsm.screenhome.data.network
 
 import retrofit2.http.GET
+import retrofit2.http.Query
 import ru.malushko.testtaskforbsm.screenhome.data.network.models.HomeResponseModel
 
 interface ApiService {

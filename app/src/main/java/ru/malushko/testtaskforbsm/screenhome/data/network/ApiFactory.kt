@@ -9,7 +9,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object ApiFactory {
 
-    var interceptor=HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
+    var interceptor=HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     var client=OkHttpClient.Builder().addInterceptor(interceptor).build()
 
     private const val BASE_URL = "https://run.mocky.io/v3/"

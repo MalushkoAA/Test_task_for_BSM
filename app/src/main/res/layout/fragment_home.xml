@@ -153,13 +153,14 @@
                 app:layout_constraintTop_toTopOf="@id/tv_home_hot_sales_header" />
 
             <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/vpager_hame_hot_sales"
+                android:id="@+id/vpager_home_hot_sales"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="182dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_home_hot_sales_header" />
+                app:layout_constraintTop_toBottomOf="@id/tv_home_hot_sales_header"
+                tools:listitem="@layout/item_hot_sale" />
 
             <TextView
                 android:id="@+id/tv_home_best_seller"
@@ -170,7 +171,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/best_seller_header"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/vpager_hame_hot_sales" />
+                app:layout_constraintTop_toBottomOf="@id/vpager_home_hot_sales" />
 
             <TextView
                 android:id="@+id/tv_home_see_more_1"

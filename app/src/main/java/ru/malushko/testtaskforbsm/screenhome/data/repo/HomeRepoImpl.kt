@@ -8,10 +8,12 @@ import ru.malushko.testtaskforbsm.screenhome.data.datasource.DataSource
 import ru.malushko.testtaskforbsm.screenhome.data.datasource.model.CategoriesDataModel
 import ru.malushko.testtaskforbsm.screenhome.data.mapper.HomeMapper
 import ru.malushko.testtaskforbsm.screenhome.data.network.ApiFactory
+import ru.malushko.testtaskforbsm.screenhome.data.network.models.HomeStoreDto
 import ru.malushko.testtaskforbsm.screenhome.domain.entities.BestSeller
 import ru.malushko.testtaskforbsm.screenhome.domain.entities.Category
 import ru.malushko.testtaskforbsm.screenhome.domain.entities.HomeStore
 import ru.malushko.testtaskforbsm.screenhome.domain.repo.HomeRepository
+import java.lang.Exception
 
 class HomeRepoImpl : HomeRepository {
 
@@ -19,6 +21,9 @@ class HomeRepoImpl : HomeRepository {
     private val apiService = ApiFactory.apiService
     private val categoriesListLD = MutableLiveData<List<CategoriesDataModel>>()
     private val categoriesList = DataSource.categoriesDsList
+    private val _homeStoreListDto = MutableLiveData<List<HomeStoreDto>>()
+    val homeStoreListDto: LiveData<List<HomeStoreDto>>
+        get() = _homeStoreListDto
 
 
     override fun getCategoriesList(): LiveData<List<Category>> {
@@ -36,7 +41,11 @@ class HomeRepoImpl : HomeRepository {
     }
 
     override fun getHomeStoreList(): LiveData<List<HomeStore>> {
-        TODO("Not yet implemented")
+        return Transformations.map(homeStoreListDto) {
+            it.map {
+                mapper.mapDtoToEntity(it)
+            }
+        }
     }
 
     override fun getBestSellerList(): LiveData<List<BestSeller>> {
@@ -48,7 +57,10 @@ class HomeRepoImpl : HomeRepository {
     }
 
     override suspend fun loadData() {
-        TODO("Not yet implemented")
+        try {
+            _homeStoreListDto.value = apiService.getHomeResponse().homeStore
+        } catch (e: Exception) {
+        }
     }
 
 
@@ -62,58 +74,58 @@ class HomeRepoImpl : HomeRepository {
         for (category in categoriesList) {
             when (category.name) {
                 "Phones" -> {
-                    if(category.isSelected)with(category){
-                        image=R.drawable.ic_category_phone_selected
-                        circleColor=R.drawable.ic_circle_primary
-                        textColor=R.color.primary
-                    }else with(category){
-                        image=R.drawable.ic_category_phone
-                        circleColor=R.drawable.ic_circle_whie
-                        textColor=R.color.secondary
+                    if (category.isSelected) with(category) {
+                        image = R.drawable.ic_category_phone_selected
+                        circleColor = R.drawable.ic_circle_primary
+                        textColor = R.color.primary
+                    } else with(category) {
+                        image = R.drawable.ic_category_phone
+                        circleColor = R.drawable.ic_circle_whie
+                        textColor = R.color.secondary
                     }
                 }
                 "Computer" -> {
-                    if(category.isSelected)with(category){
-                        image=R.drawable.ic_category_computer_selected
-                        circleColor=R.drawable.ic_circle_primary
-                        textColor=R.color.primary
-                    }else with(category){
-                        image=R.drawable.ic_category_computer
-                        circleColor=R.drawable.ic_circle_whie
-                        textColor=R.color.secondary
+                    if (category.isSelected) with(category) {
+                        image = R.drawable.ic_category_computer_selected
+                        circleColor = R.drawable.ic_circle_primary
+                        textColor = R.color.primary
+                    } else with(category) {
+                        image = R.drawable.ic_category_computer
+                        circleColor = R.drawable.ic_circle_whie
+                        textColor = R.color.secondary
                     }
                 }
                 "Health" -> {
-                    if(category.isSelected)with(category){
-                        image=R.drawable.ic_category_health_selected
-                        circleColor=R.drawable.ic_circle_primary
-                        textColor=R.color.primary
-                    }else with(category){
-                        image=R.drawable.ic_category_health
-                        circleColor=R.drawable.ic_circle_whie
-                        textColor=R.color.secondary
+                    if (category.isSelected) with(category) {
+                        image = R.drawable.ic_category_health_selected
+                        circleColor = R.drawable.ic_circle_primary
+                        textColor = R.color.primary
+                    } else with(category) {
+                        image = R.drawable.ic_category_health
+                        circleColor = R.drawable.ic_circle_whie
+                        textColor = R.color.secondary
                     }
                 }
                 "Books" -> {
-                    if(category.isSelected)with(category){
-                        image=R.drawable.ic_category_books_selected
-                        circleColor=R.drawable.ic_circle_primary
-                        textColor=R.color.primary
-                    }else with(category){
-                        image=R.drawable.ic_category_books
-                        circleColor=R.drawable.ic_circle_whie
-                        textColor=R.color.secondary
+                    if (category.isSelected) with(category) {
+                        image = R.drawable.ic_category_books_selected
+                        circleColor = R.drawable.ic_circle_primary
+                        textColor = R.color.primary
+                    } else with(category) {
+                        image = R.drawable.ic_category_books
+                        circleColor = R.drawable.ic_circle_whie
+                        textColor = R.color.secondary
                     }
                 }
                 "Pets" -> {
-                    if(category.isSelected)with(category){
-                        image=R.drawable.ic_category_pets_selected
-                        circleColor=R.drawable.ic_circle_primary
-                        textColor=R.color.primary
-                    }else with(category){
-                        image=R.drawable.ic_category_pets
-                        circleColor=R.drawable.ic_circle_whie
-                        textColor=R.color.secondary
+                    if (category.isSelected) with(category) {
+                        image = R.drawable.ic_category_pets_selected
+                        circleColor = R.drawable.ic_circle_primary
+                        textColor = R.color.primary
+                    } else with(category) {
+                        image = R.drawable.ic_category_pets
+                        circleColor = R.drawable.ic_circle_whie
+                        textColor = R.color.secondary
                     }
 
                 }

@@ -23,13 +23,12 @@ class CategoriesAdapter : ListAdapter<Category, CategoriesViewHolder>(Categories
     @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
         val categories = getItem(position)
-        with(holder.binding){
-            with(categories){
+        with(holder.binding) {
+            with(categories) {
                 rvCategoryIvCircle.setImageResource(circleColor)
                 rvCategoryIvCategory.setImageResource(image)
                 rvCategoryTvCategory.text = name
                 rvCategoryTvCategory.setTextColor(root.resources.getColor(textColor))
-
                 root.setOnClickListener {
                     onCategoryClickListener?.onCategoryClick(this)
                 }
