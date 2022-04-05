@@ -5,13 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
+import ru.malushko.testtaskforbsm.R
 import ru.malushko.testtaskforbsm.databinding.FragmentHomeBinding
+import ru.malushko.testtaskforbsm.databinding.ItemBestSellerBinding
+import ru.malushko.testtaskforbsm.screenhome.domain.entities.BestSeller
 import ru.malushko.testtaskforbsm.screenhome.domain.entities.Category
-import ru.malushko.testtaskforbsm.screenhome.domain.entities.HomeStore
+import ru.malushko.testtaskforbsm.screenhome.presentation.adapters.bestselleradapters.BestSellerAdapter
 import ru.malushko.testtaskforbsm.screenhome.presentation.adapters.categoriesadapters.CategoriesAdapter
 import ru.malushko.testtaskforbsm.screenhome.presentation.adapters.homestoreadapters.HomeStoreAdapter
 import ru.malushko.testtaskforbsm.screenhome.presentation.viewModels.HomeViewModel
@@ -38,24 +39,42 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         val categoriesAdapter = CategoriesAdapter()
-        categoriesAdapter.onCategoryClickListener = object : CategoriesAdapter.OnCategoryClickListener {
-            override fun onCategoryClick(category: Category) {
-                viewModel.selectCat(category.id)
-            }
-        }
         binding.rvSelectCategory.adapter = categoriesAdapter
         viewModel.categoriesList.observe(viewLifecycleOwner) {
             categoriesAdapter.submitList(it)
         }
+        categoriesAdapter.onCategoryClickListener =
+            object : CategoriesAdapter.OnCategoryClickListener {
+                override fun onCategoryClick(category: Category) {
+                    viewModel.selectCat(category.id)
+                }
+            }
 
         val homeStoreAdapter = HomeStoreAdapter()
         binding.vpagerHomeHotSales.adapter = homeStoreAdapter
-        binding.vpagerHomeHotSales.orientation=ViewPager2.ORIENTATION_HORIZONTAL
+        binding.vpagerHomeHotSales.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         viewModel.homeStoreList.observe(viewLifecycleOwner) {
             homeStoreAdapter.submitList(it)
         }
 
+        val bestSellerAdapter = BestSellerAdapter()
+        binding.rvHomeBestSeller.adapter = bestSellerAdapter
+        viewModel.bestSellerList.observe(viewLifecycleOwner) {
+            bestSellerAdapter.submitList(it)
+        }
+        bestSellerAdapter.onBestSellerClickListener =
+            object : BestSellerAdapter.OnBestSellerClickListener {
+                override fun onFavoriteClick(
+                    bestSellerItem: BestSeller,
+                    hg: ItemBestSellerBinding
+                ) {
+                    viewModel.onBestSellerFavoriteClick(bestSellerItem)
+                    if (bestSellerItem.isFavorites == true) {
+                        hg.rvBestSellerFavorite.setImageResource(R.drawable.ic_favorite)
+                    } else {
+                        hg.rvBestSellerFavorite.setImageResource(R.drawable.ic_favorite_not)
+                    }
+                }
+            }
     }
-
-
 }

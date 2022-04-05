@@ -8,6 +8,8 @@ import ru.malushko.testtaskforbsm.screenhome.data.datasource.DataSource
 import ru.malushko.testtaskforbsm.screenhome.data.datasource.model.CategoriesDataModel
 import ru.malushko.testtaskforbsm.screenhome.data.mapper.HomeMapper
 import ru.malushko.testtaskforbsm.screenhome.data.network.ApiFactory
+import ru.malushko.testtaskforbsm.screenhome.data.network.models.BestSellerDto
+import ru.malushko.testtaskforbsm.screenhome.data.network.models.HomeResponseModel
 import ru.malushko.testtaskforbsm.screenhome.data.network.models.HomeStoreDto
 import ru.malushko.testtaskforbsm.screenhome.domain.entities.BestSeller
 import ru.malushko.testtaskforbsm.screenhome.domain.entities.Category
@@ -24,6 +26,9 @@ class HomeRepoImpl : HomeRepository {
     private val _homeStoreListDto = MutableLiveData<List<HomeStoreDto>>()
     val homeStoreListDto: LiveData<List<HomeStoreDto>>
         get() = _homeStoreListDto
+    private val _bestSellerListDto = MutableLiveData<List<BestSellerDto>>()
+    val bestSellerListDto: LiveData<List<BestSellerDto>>
+        get() = _bestSellerListDto
 
 
     override fun getCategoriesList(): LiveData<List<Category>> {
@@ -49,7 +54,11 @@ class HomeRepoImpl : HomeRepository {
     }
 
     override fun getBestSellerList(): LiveData<List<BestSeller>> {
-        TODO("Not yet implemented")
+        return Transformations.map(bestSellerListDto) {
+            it.map {
+                mapper.mapDtoToEntity(it)
+            }
+        }
     }
 
     override fun getBestSeller(id: Int): LiveData<BestSeller> {
@@ -58,6 +67,7 @@ class HomeRepoImpl : HomeRepository {
 
     override suspend fun loadData() {
         try {
+            _bestSellerListDto.value = apiService.getHomeResponse().bestSeller
             _homeStoreListDto.value = apiService.getHomeResponse().homeStore
         } catch (e: Exception) {
         }

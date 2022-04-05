@@ -68,7 +68,7 @@
             app:tint="@color/white" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/rv_best_seller_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/rv_best_seller_fav_holder"
