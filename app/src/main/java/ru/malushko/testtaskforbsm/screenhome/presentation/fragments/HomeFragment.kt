@@ -1,10 +1,11 @@
 package ru.malushko.testtaskforbsm.screenhome.presentation.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import ru.malushko.testtaskforbsm.R
@@ -38,7 +39,11 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
-        val categoriesAdapter = CategoriesAdapter()
+        binding.icHomeFilter.setOnClickListener {
+            openFilterController()
+        }
+
+        val categoriesAdapter = CategoriesAdapter(context)
         binding.rvSelectCategory.adapter = categoriesAdapter
         viewModel.categoriesList.observe(viewLifecycleOwner) {
             categoriesAdapter.submitList(it)
@@ -47,6 +52,13 @@ class HomeFragment : Fragment() {
             object : CategoriesAdapter.OnCategoryClickListener {
                 override fun onCategoryClick(category: Category) {
                     viewModel.selectCat(category.id)
+                    if(category.id!=0){
+                        binding.homeWidgetsGroup.visibility=View.GONE
+                        binding.homeError.visibility=View.VISIBLE
+                    }else{
+                        binding.homeWidgetsGroup.visibility=View.VISIBLE
+                        binding.homeError.visibility=View.GONE
+                    }
                 }
             }
 
@@ -57,7 +69,7 @@ class HomeFragment : Fragment() {
             homeStoreAdapter.submitList(it)
         }
 
-        val bestSellerAdapter = BestSellerAdapter()
+        val bestSellerAdapter = BestSellerAdapter(context)
         binding.rvHomeBestSeller.adapter = bestSellerAdapter
         viewModel.bestSellerList.observe(viewLifecycleOwner) {
             bestSellerAdapter.submitList(it)
@@ -77,4 +89,19 @@ class HomeFragment : Fragment() {
                 }
             }
     }
+
+    fun openFilterController() {
+        with(binding.filterOptionsCard){
+            filterOptions.visibility=View.VISIBLE
+            btnFilterCloser.setOnClickListener {
+                binding.filterOptionsCard.filterOptions.visibility=View.GONE
+            }
+            btnFilterDone.setOnClickListener {
+                binding.filterOptionsCard.filterOptions.visibility=View.GONE
+                Toast.makeText(context, "Your filters are accepted", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    }
+
 }

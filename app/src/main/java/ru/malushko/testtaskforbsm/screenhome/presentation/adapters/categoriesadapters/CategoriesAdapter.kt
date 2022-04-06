@@ -1,13 +1,16 @@
 package ru.malushko.testtaskforbsm.screenhome.presentation.adapters.categoriesadapters
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import ru.malushko.testtaskforbsm.databinding.ItemCategoryBinding
 import ru.malushko.testtaskforbsm.screenhome.domain.entities.Category
 
-class CategoriesAdapter : ListAdapter<Category, CategoriesViewHolder>(CategoriesDiffCallback) {
+class CategoriesAdapter(
+    private val context: Context?
+) : ListAdapter<Category, CategoriesViewHolder>(CategoriesDiffCallback) {
 
     var onCategoryClickListener: OnCategoryClickListener? = null
 
@@ -20,6 +23,7 @@ class CategoriesAdapter : ListAdapter<Category, CategoriesViewHolder>(Categories
         return CategoriesViewHolder(binding)
     }
 
+
     @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: CategoriesViewHolder, position: Int) {
         val categories = getItem(position)
@@ -28,14 +32,13 @@ class CategoriesAdapter : ListAdapter<Category, CategoriesViewHolder>(Categories
                 rvCategoryIvCircle.setImageResource(circleColor)
                 rvCategoryIvCategory.setImageResource(image)
                 rvCategoryTvCategory.text = name
-                rvCategoryTvCategory.setTextColor(root.resources.getColor(textColor))
+                rvCategoryTvCategory.setTextColor(context!!.getColor(textColor))
                 root.setOnClickListener {
                     onCategoryClickListener?.onCategoryClick(this)
                 }
             }
         }
     }
-
 
     interface OnCategoryClickListener {
         fun onCategoryClick(category: Category)

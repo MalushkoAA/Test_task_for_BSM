@@ -54,8 +54,8 @@
 
             <ImageView
                 android:id="@+id/ic_home_filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="12dp"
+                android:layout_height="14dp"
                 android:layout_marginEnd="35dp"
                 android:src="@drawable/ic_home_filter"
                 app:layout_constraintBottom_toBottomOf="@id/tv_home_city"
@@ -100,14 +100,31 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_home_select_category"
                 tools:listitem="@layout/item_category" />
 
-            <androidx.appcompat.widget.SearchView
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/home_searchview"
                 android:layout_width="300dp"
-                android:layout_height="55dp"
+                android:layout_height="34dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="18dp"
+                android:hint="Search"
+                app:startIconDrawable="@drawable/ic_magnifier"
+                app:startIconTint="@color/primary"
+                app:boxCornerRadiusBottomStart="20dp"
+                app:boxCornerRadiusTopEnd="20dp"
+                app:boxCornerRadiusBottomEnd="20dp"
+                app:boxCornerRadiusTopStart="20dp"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeWidth="0dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rv_select_category" />
+                app:layout_constraintTop_toBottomOf="@id/rv_select_category">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAppearance="@style/hint_text_appearance"
+
+                    />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
             <ImageView
                 android:id="@+id/ic_home_qr_circle"
@@ -195,10 +212,36 @@
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_home_best_seller"
+                app:layout_constraintVertical_bias="0.0"
                 app:spanCount="2"
                 tools:listitem="@layout/item_best_seller" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/home_widgets_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:constraint_referenced_ids="tv_home_hot_sales_header, tv_home_see_more,
+                vpager_home_hot_sales, tv_home_best_seller, tv_home_see_more_1, rv_home_best_seller"
+                />
+
+            <TextView
+                android:id="@+id/home_error"
+                style="@style/TVMedium"
+                android:textColor="@color/primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_error_text"
+                android:layout_marginTop="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/home_searchview"
+                android:visibility="gone"
+                />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

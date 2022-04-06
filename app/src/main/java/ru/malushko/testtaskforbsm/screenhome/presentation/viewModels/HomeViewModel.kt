@@ -1,6 +1,8 @@
 package ru.malushko.testtaskforbsm.screenhome.presentation.viewModels
 
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
@@ -8,7 +10,11 @@ import ru.malushko.testtaskforbsm.screenhome.data.repo.HomeRepoImpl
 import ru.malushko.testtaskforbsm.screenhome.domain.entities.BestSeller
 import ru.malushko.testtaskforbsm.screenhome.domain.usecases.*
 
+
+
 class HomeViewModel : ViewModel() {
+
+    var loadingStatus:Boolean=false
 
     private val repo = HomeRepoImpl()
     private val getCategoriesListUseCase = GetCategoriesListUseCase(repo)
@@ -24,13 +30,20 @@ class HomeViewModel : ViewModel() {
     fun selectCat(id: Int) = selectCategoryUseCase(id)
 
 
-    fun onBestSellerFavoriteClick(bestSellerItem: BestSeller){
+
+    fun onBestSellerFavoriteClick(bestSellerItem: BestSeller) {
         bestSellerItem.isFavorites = bestSellerItem.isFavorites != true
     }
 
     init {
+        selectCat(0)
         viewModelScope.launch {
-            loadDataUseCase()
+            try {
+                loadDataUseCase()
+                loadingStatus=true
+            } catch (e: Exception) {
+            }
+
         }
     }
 }

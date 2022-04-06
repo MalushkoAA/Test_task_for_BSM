@@ -66,11 +66,8 @@ class HomeRepoImpl : HomeRepository {
     }
 
     override suspend fun loadData() {
-        try {
-            _bestSellerListDto.value = apiService.getHomeResponse().bestSeller
-            _homeStoreListDto.value = apiService.getHomeResponse().homeStore
-        } catch (e: Exception) {
-        }
+        _bestSellerListDto.value = apiService.getHomeResponse().bestSeller
+        _homeStoreListDto.value = apiService.getHomeResponse().homeStore
     }
 
 

@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import ru.malushko.testtaskforbsm.R
 import ru.malushko.testtaskforbsm.databinding.ItemHotSaleBinding
 import ru.malushko.testtaskforbsm.screenhome.domain.entities.HomeStore
 
@@ -34,7 +36,13 @@ class HomeStoreAdapter : ListAdapter<HomeStore, HomeStoreViewHolder>(HomeStoreDi
             with(homeStoreItems) {
                 rvHotSalesTvTitle.text = title
                 rvHotSalesTvSubtitle.text = subtitle
-                Glide.with(rvHotSalesImage.context).load(picture).into(rvHotSalesImage)
+                Glide.with(rvHotSalesImage.context)
+                    .load(picture)
+                    .apply(
+                        RequestOptions()
+                            .placeholder(R.drawable.loading_animation)
+                            .error(R.drawable.ic_broken_image))
+                    .into(rvHotSalesImage)
                 labelNew(this)
             }
         }
